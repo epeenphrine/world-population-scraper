@@ -1,0 +1,2 @@
+# scraper for world population (https://www.worldometers.info/world-population/population-by-country/)
+couldn't find any good api for this data so i build one from scratch by taking it from this site. It's stored in `df_dict`

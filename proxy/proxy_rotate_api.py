@@ -52,14 +52,17 @@ def proxy_rotate_api(url):
                 # requests
                 res = requests.get(url, headers=headers_pick, proxies=proxy_pick, timeout=(1))
                 if res:
-                    json_data = json.loads(res.content)
-                    print("got json")
-                    return json_data 
+                    try:
+                        json_data = json.loads(res.content)
+                        print("got json")
+                        return json_data 
+                    except:
+                        print("returning res in except")
+                        return res
 
             except:
                 # proxies that do not work are removed from the list and json
                 print(f"{proxy_pick} did not work")
-                
                 proxies_list.remove(proxy_pick)
                 with open('proxydictlist.json', 'w') as f:
                     json.dump(proxies_list, f)
